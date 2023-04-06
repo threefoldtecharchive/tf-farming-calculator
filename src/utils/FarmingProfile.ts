@@ -94,17 +94,11 @@ export default class FarmingProfile implements FarmingProfileOptions {
   }
 
   public get rewardPerCu(): number {
-    const { type, certified } = this;
-
-    if (type === ProfileTypes.DIY) return 2.4;
-    return 2.4 + 2.4 * certified * 0.25;
+    return 2.4;
   }
 
   public get rewardPerSu(): number {
-    const { type, certified } = this;
-
-    if (type === ProfileTypes.DIY) return 1;
-    return 1 + certified * 0.25;
+    return 1;
   }
 
   public get rewardPerNu(): number {
