@@ -53,7 +53,7 @@
 
   // prettier-ignore
   $: inputFields = [
-    { label: "Memory (GBss)", symbol: "memory", type: "text" },
+    { label: "Memory (GB)", symbol: "memory" },
     { label: "vCPU (Threads)", symbol: "cpu" },
     { label: "HDD (GB)", symbol: "hdd", only: "DIY" },
     { label: "SSD (GB)", symbol: "ssd" },
@@ -72,7 +72,7 @@
 
   // prettier-ignore
   $: basicInputFields = [
-    { label: "Memory (GB)", symbol: "memory", type: "text"},
+    { label: "Memory (GB)", symbol: "memory"},
     { label: "vCPU (Threads)", symbol: "cpu"},
     { label: "HDD (GB)", symbol: "hdd", only: "DIY"},
     { label: "SSD (GB)", symbol: "ssd"},
