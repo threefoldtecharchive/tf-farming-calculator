@@ -40,6 +40,7 @@ export interface IFormField {
   min?: string | number;
   max?: string | number;
   loading?: boolean;
+  isDecimal?: boolean;
 }
 
 export interface IFlist {

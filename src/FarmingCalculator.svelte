@@ -53,32 +53,38 @@
 
   // prettier-ignore
   $: inputFields = [
-    { label: "Memory (GBss)", symbol: "memory" },
+    { label: "Memory (GBss)", symbol: "memory", type: "text" },
     { label: "vCPU (Threads)", symbol: "cpu" },
     { label: "HDD (GB)", symbol: "hdd", only: "DIY" },
     { label: "SSD (GB)", symbol: "ssd" },
     { label: "NU Required Per CU", symbol: "nuRequiredPerCu" },
     { label: "Hardware Cost (USD)", symbol: "investmentCostHW" },
-    { label: "Price of TFT at point of registration on blockchain (USD)", symbol: "price"},
+    { 
+      label: "Price of TFT at point of registration on blockchain (USD)",
+      symbol: "price", isDecimal:true
+    },
     // { label: "Token price after 5 years (USD)", symbol: "priceAfter5Years" },
     { label: "Power Utilization (Watt)", symbol: "powerUtilization" },
-    { label: "Power Cost (USD)", symbol: "powerCost" },
+    { label: "Power Cost (USD)", symbol: "powerCost", isDecimal: true },
     { label: "Public IP", symbol: "publicIp", type: "checkbox" },
     { label: "Certified", symbol: "certified", type: "checkbox" },
   ];
 
   // prettier-ignore
   $: basicInputFields = [
-    { label: "Memory (GB)", symbol: "memory"},
+    { label: "Memory (GB)", symbol: "memory", type: "text"},
     { label: "vCPU (Threads)", symbol: "cpu"},
     { label: "HDD (GB)", symbol: "hdd", only: "DIY"},
     { label: "SSD (GB)", symbol: "ssd"},
     { label: "NU Required Per CU", symbol: "nuRequiredPerCu"},
     { label: "Hardware Cost (USD)", symbol: "investmentCostHW" },
-    { label: "Price of TFT at point of registration on blockchain (USD)", symbol: "price"},
+    {
+      label: "Price of TFT at point of registration on blockchain (USD)",
+      symbol: "price", isDecimal: true
+    },
     { label: "Maximum Token Price", symbol: "maximumTokenPrice" },
     { label: "Power Utilization (Watt)", symbol: "powerUtilization"},
-    { label: "Power Cost (USD)", symbol: "powerCost"},
+    { label: "Power Cost (USD)", symbol: "powerCost", isDecimal: true},
     { label: "Public IP", symbol: "publicIp", type: "checkbox" },
     { label: "Certified", symbol: "certified", type: "checkbox" },
   ];
@@ -191,16 +197,18 @@
   }
 
   // prettier-ignore
-  const createNumberField = ({ label, symbol,disabled }: any): IFormField => ({ 
+  const createNumberField = ({ label, symbol, disabled, isDecimal }: any): IFormField => ({
     label, 
     disabled,
     symbol, 
-    type: "number", 
+    type: isDecimal ? "number" : "text",
     min: 0,
     validator(val: number) {
+      if (!isDecimal && String(val).includes(".")) return "This field does not accept decimal.";
       val = +val;
-      if (isNaN(val)) return "Invalid Number";
+      if (val.toString().includes("e") || isNaN(val)) return "Invalid Number";
       if (val < 0) return "Value must be positive";
+      if (val.toString().startsWith("+")) return "Value must be positive";
       if (symbol === "price"){
         if (val < 0.08) return "Minimum TFT price allowed is 0.08 USD.";
       }

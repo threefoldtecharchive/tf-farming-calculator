@@ -188,8 +188,7 @@
             />
           {:else if field.type === "number"}
             <input
-              type="text"
-              data-type="number"
+              type="number"
               class={"input" +
                 (!field.disabled && (field.error || _error)
                   ? " is-danger"
