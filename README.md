@@ -1,6 +1,6 @@
 # Threefold Farming Calculator (Weblet)
 
-A web component which helps in calculating a farming related calculations.
+A web component which helps in calculating farming related calculations.
 
 ## Run
 
