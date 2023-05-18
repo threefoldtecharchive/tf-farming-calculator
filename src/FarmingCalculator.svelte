@@ -82,7 +82,7 @@
       label: "Price of TFT at point of registration on blockchain (USD)",
       symbol: "price", isDecimal: true
     },
-    { label: "Maximum Token Price", symbol: "maximumTokenPrice" },
+    { label: "Maximum Token Price", symbol: "maximumTokenPrice", isDecimal: true },
     { label: "Power Utilization (Watt)", symbol: "powerUtilization"},
     { label: "Power Cost (USD)", symbol: "powerCost", isDecimal: true},
     { label: "Public IP", symbol: "publicIp", type: "checkbox" },
