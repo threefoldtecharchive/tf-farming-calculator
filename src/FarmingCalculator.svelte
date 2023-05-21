@@ -456,6 +456,7 @@
                       field={createNumberField({
                         label: "Token price after 5 years (USD)",
                         symbol: "priceAfter5Years",
+                        isDecimal: true,
                       })}
                     />
                   </div>
