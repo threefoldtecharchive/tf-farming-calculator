@@ -82,7 +82,7 @@
       label: "Price of TFT at point of registration on blockchain (USD)",
       symbol: "price", isDecimal: true
     },
-    { label: "Maximum Token Price", symbol: "maximumTokenPrice", isDecimal: true },
+    { label: "Maximum Token Price", symbol: "maximumTokenPrice" },
     { label: "Power Utilization (Watt)", symbol: "powerUtilization"},
     { label: "Power Cost (USD)", symbol: "powerCost", isDecimal: true},
     { label: "Public IP", symbol: "publicIp", type: "checkbox" },
@@ -166,8 +166,8 @@
   function _updateLineCanvas() {
     const price = active === "Basic" ? activeProfile.maximumTokenPrice : activeProfile.priceAfter5Years; // prettier-ignore
     if (_lineCanvas && activeProfile) {
-      const X = (price - 0.15) / 19;
-      const xs = [...Array.from({ length: 20 }).map((_, i) => 0.15 + X * i)];
+      const X = (price - 0.01) / 9;
+      const xs = [...Array.from({ length: 10 }).map((_, i) => 0.01 + X * i)];
       _lineCanvas.data.labels = xs.map((i) => i.toFixed(2));
 
       if (showChartRoi) {
